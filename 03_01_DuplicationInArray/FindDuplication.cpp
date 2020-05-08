@@ -8,29 +8,30 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 *******************************************************************/
 
 //==================================================================
-// ¡¶½£Ö¸Offer¡ª¡ªÃûÆóÃæÊÔ¹Ù¾«½²µäĞÍ±à³ÌÌâ¡·´úÂë
-// ×÷Õß£ººÎº£ÌÎ
+// ã€Šå‰‘æŒ‡Offerâ€”â€”åä¼é¢è¯•å®˜ç²¾è®²å…¸å‹ç¼–ç¨‹é¢˜ã€‹ä»£ç 
+// ä½œè€…ï¼šä½•æµ·æ¶›
 //==================================================================
 
-// ÃæÊÔÌâ3£¨Ò»£©£ºÕÒ³öÊı×éÖĞÖØ¸´µÄÊı×Ö
-// ÌâÄ¿£ºÔÚÒ»¸ö³¤¶ÈÎªnµÄÊı×éÀïµÄËùÓĞÊı×Ö¶¼ÔÚ0µ½n-1µÄ·¶Î§ÄÚ¡£Êı×éÖĞÄ³Ğ©Êı×ÖÊÇÖØ¸´µÄ£¬µ«²»ÖªµÀÓĞ¼¸¸öÊı×ÖÖØ¸´ÁË£¬
-// Ò²²»ÖªµÀÃ¿¸öÊı×ÖÖØ¸´ÁË¼¸´Î¡£ÇëÕÒ³öÊı×éÖĞÈÎÒâÒ»¸öÖØ¸´µÄÊı×Ö¡£ÀıÈç£¬Èç¹ûÊäÈë³¤¶ÈÎª7µÄÊı×é{2, 3, 1, 0, 2, 5, 3}£¬
-// ÄÇÃ´¶ÔÓ¦µÄÊä³öÊÇÖØ¸´µÄÊı×Ö2»òÕß3¡£
+// é¢è¯•é¢˜3ï¼ˆä¸€ï¼‰ï¼šæ‰¾å‡ºæ•°ç»„ä¸­é‡å¤çš„æ•°å­—
+// é¢˜ç›®ï¼šåœ¨ä¸€ä¸ªé•¿åº¦ä¸ºnçš„æ•°ç»„é‡Œçš„æ‰€æœ‰æ•°å­—éƒ½åœ¨0åˆ°n-1çš„èŒƒå›´å†…ã€‚æ•°ç»„ä¸­æŸäº›æ•°å­—æ˜¯é‡å¤çš„ï¼Œä½†ä¸çŸ¥é“æœ‰å‡ ä¸ªæ•°å­—é‡å¤äº†ï¼Œ
+// ä¹Ÿä¸çŸ¥é“æ¯ä¸ªæ•°å­—é‡å¤äº†å‡ æ¬¡ã€‚è¯·æ‰¾å‡ºæ•°ç»„ä¸­ä»»æ„ä¸€ä¸ªé‡å¤çš„æ•°å­—ã€‚ä¾‹å¦‚ï¼Œå¦‚æœè¾“å…¥é•¿åº¦ä¸º7çš„æ•°ç»„{2, 3, 1, 0, 2, 5, 3}ï¼Œ
+// é‚£ä¹ˆå¯¹åº”çš„è¾“å‡ºæ˜¯é‡å¤çš„æ•°å­—2æˆ–è€…3ã€‚
 
 #include <cstdio>
 
-// ²ÎÊı:
-//        numbers:     Ò»¸öÕûÊıÊı×é
-//        length:      Êı×éµÄ³¤¶È
-//        duplication: (Êä³ö) Êı×éÖĞµÄÒ»¸öÖØ¸´µÄÊı×Ö
-// ·µ»ØÖµ:             
-//        true  - ÊäÈëÓĞĞ§£¬²¢ÇÒÊı×éÖĞ´æÔÚÖØ¸´µÄÊı×Ö
-//        false - ÊäÈëÎŞĞ§£¬»òÕßÊı×éÖĞÃ»ÓĞÖØ¸´µÄÊı×Ö
+// å‚æ•°:
+//        numbers:     ä¸€ä¸ªæ•´æ•°æ•°ç»„
+//        length:      æ•°ç»„çš„é•¿åº¦
+//        duplication: (è¾“å‡º) æ•°ç»„ä¸­çš„ä¸€ä¸ªé‡å¤çš„æ•°å­—
+// è¿”å›å€¼:             
+//        true  - è¾“å…¥æœ‰æ•ˆï¼Œå¹¶ä¸”æ•°ç»„ä¸­å­˜åœ¨é‡å¤çš„æ•°å­—
+//        false - è¾“å…¥æ— æ•ˆï¼Œæˆ–è€…æ•°ç»„ä¸­æ²¡æœ‰é‡å¤çš„æ•°å­—
 bool duplicate(int numbers[], int length, int* duplication)
 {
+ ////å®‰å…¨æ£€æŸ¥1ï¼šæ•°ç»„æ˜¯å¦å­˜åœ¨ï¼Œé•¿åº¦å‚æ•°æ˜¯å¦åˆé€‚
     if(numbers == nullptr || length <= 0)
         return false;
-
+ ////å®‰å…¨æ£€æŸ¥2ï¼šæ•°ç»„å…ƒç´ æ˜¯å¦å®‰å…¨
     for(int i = 0; i < length; ++i)
     {
         if(numbers[i] < 0 || numbers[i] > length - 1)
@@ -47,9 +48,10 @@ bool duplicate(int numbers[], int length, int* duplication)
                 return true;
             }
 
-            // ½»»»numbers[i]ºÍnumbers[numbers[i]]             
+            // äº¤æ¢numbers[i]å’Œnumbers[numbers[i]] 
+   /////æ³¨æ„äº¤æ¢çš„tempç”¨æ³•
             int temp = numbers[i];
-            numbers[i] = numbers[temp];
+            numbers[i] = numbers[temp];////æ³¨æ„è¦æ¢æˆtemp
             numbers[temp] = temp;
         }
     }
@@ -57,7 +59,7 @@ bool duplicate(int numbers[], int length, int* duplication)
     return false;
 }
 
-// ====================²âÊÔ´úÂë====================
+// ====================æµ‹è¯•ä»£ç ====================
 bool contains(int array[], int length, int number)
 {
     for(int i = 0; i < length; ++i)
@@ -92,7 +94,7 @@ void test(char* testName, int numbers[], int lengthNumbers, int expected[], int 
         printf("FAILED.\n");
 }
 
-// ÖØ¸´µÄÊı×ÖÊÇÊı×éÖĞ×îĞ¡µÄÊı×Ö
+// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å°çš„æ•°å­—
 void test1()
 {
     int numbers[] = { 2, 1, 3, 1, 4 };
@@ -100,7 +102,7 @@ void test1()
     test("Test1", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// ÖØ¸´µÄÊı×ÖÊÇÊı×éÖĞ×î´óµÄÊı×Ö
+// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å¤§çš„æ•°å­—
 void test2()
 {
     int numbers[] = { 2, 4, 3, 1, 4 };
@@ -108,7 +110,7 @@ void test2()
     test("Test2", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// Êı×éÖĞ´æÔÚ¶à¸öÖØ¸´µÄÊı×Ö
+// æ•°ç»„ä¸­å­˜åœ¨å¤šä¸ªé‡å¤çš„æ•°å­—
 void test3()
 {
     int numbers[] = { 2, 4, 2, 1, 4 };
@@ -116,7 +118,7 @@ void test3()
     test("Test3", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// Ã»ÓĞÖØ¸´µÄÊı×Ö
+// æ²¡æœ‰é‡å¤çš„æ•°å­—
 void test4()
 {
     int numbers[] = { 2, 1, 3, 0, 4 };
@@ -124,7 +126,7 @@ void test4()
     test("Test4", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-// Ã»ÓĞÖØ¸´µÄÊı×Ö
+// æ²¡æœ‰é‡å¤çš„æ•°å­—
 void test5()
 {
     int numbers[] = { 2, 1, 3, 5, 4 };
@@ -132,7 +134,7 @@ void test5()
     test("Test5", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-// ÎŞĞ§µÄÊäÈë
+// æ— æ•ˆçš„è¾“å…¥
 void test6()
 {
     int* numbers = nullptr;
@@ -149,3 +151,55 @@ void main()
     test5();
     test6();
 }
+/*******************************************************************
+wen0.618 on 5
+#include<iostream>
+using namespace std;
+
+bool findr(int length, int a[])
+{
+	if (length <= 0 || a == nullptr) {
+		cout << "input error!" << endl;
+		return false;
+	}
+	for (int i = 0; i != length; ++i)
+	{
+		if (a[i]<0 || a[i]>length - 1) {
+			cout << "input error!" << endl;
+			return false;
+		}
+	}
+	for (int i = 0; i != length; ++i)
+	{
+		while (a[i] != i) {
+			
+			if (a[i] != a[a[i]]) {
+				int temp = a[i];
+				a[i] = a[a[i]];
+				a[temp] = temp;
+
+			}
+			else{
+				cout << "found a repeated number: " << a[i] << endl;
+				return true;
+			}
+
+		}
+	}
+	return false;
+}
+int main()
+{
+	int numbers[] = { 2, 1, 3, 1, 4 };
+	int numbers2[] = { 2, 4, 3, 1, 4 };
+	int numbers3[] = { 2, 4, 2, 1, 4 };
+	int numbers4[] = { 2, 1, 3, 0, 4 };
+	int duplications[] = { -1 };
+	findr(5,numbers);
+	findr(5, numbers2);
+	findr(5, numbers3);
+	findr(5, numbers4);
+	findr(5, duplications);
+	
+}
+*******************************************************************/
